@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SpringIndicator">
+        <attr name="siTextColor" format="reference"/>
+        <attr name="siSelectedTextColor" format="reference"/>
+        <attr name="siTextBg" format="reference"/>
+        <attr name="siTextSize" format="dimension"/>
+        <attr name="siIndicatorColor" format="reference"/>
+        <attr name="siIndicatorColors" format="reference"/>
+        <attr name="siRadiusMax" format="dimension"/>
+        <attr name="siRadiusMin" format="dimension"/>
+    </declare-styleable>
+
+
+</resources>
