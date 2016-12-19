@@ -89,8 +89,6 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     private SimpleCustomExoPlayerView simpleCustomExoPlayerView;
     private ProgressView mProgressView;
 
-    private Button retryButton;
-
     private DataSource.Factory mediaDataSourceFactory;
     private SimpleExoPlayer player;
     private DefaultTrackSelector trackSelector;
@@ -138,27 +136,6 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewpager_header_video, container, false);
-
-        simpleCustomExoPlayerView = (SimpleCustomExoPlayerView) view.findViewById(R.id.simple_exo_player_view);
-
-        View rootView = view.findViewById(R.id.root);
-        rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MappingTrackSelector.MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
-                if (mappedTrackInfo != null) {
-                    trackSelectionHelper.showSelectionDialog(getActivity(), mHeaderItemEntry.name, trackSelector.getCurrentMappedTrackInfo(), -1);
-                }
-            }
-        });
-
-        retryButton = (Button) view.findViewById(R.id.retry_button);
-        retryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initializePlayer();
-            }
-        });
 
         simpleCustomExoPlayerView = (SimpleCustomExoPlayerView) view.findViewById(R.id.simple_exo_player_view);
         simpleCustomExoPlayerView.setControllerVisibilityListener(this);
@@ -430,6 +407,7 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
         }
         playerNeedsSource = true;
         showControls();
+        showError();
     }
 
     @Override
@@ -457,6 +435,10 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     }
 
     private void showControls() {}
+
+    private void showError () {
+        Log.i("birdgangviewpager" , "showError");
+    }
 
     private void showToast(int messageId) {
         showToast(getString(messageId));

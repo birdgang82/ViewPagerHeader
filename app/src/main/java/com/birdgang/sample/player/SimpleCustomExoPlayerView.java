@@ -73,7 +73,7 @@ public final class SimpleCustomExoPlayerView extends FrameLayout {
 
         int playerLayoutId = com.google.android.exoplayer2.R.layout.exo_simple_player_view;
         boolean useArtwork = true;
-        boolean useController = true;
+        boolean useController = false;
         int surfaceType = SURFACE_TYPE_SURFACE_VIEW;
         int resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT;
         int controllerShowTimeoutMs = PlaybackControlView.DEFAULT_SHOW_TIMEOUT_MS;
