@@ -12,25 +12,24 @@ buildscript {
 }
 
 publish {
-    userOrg = 'birdgang82'
-    groupId = 'com.libviewpagerheader';
+    userOrg = 'birdgang'
+    groupId = 'com.birdgang';
     artifactId = 'viewpagerheader';
     publishVersion = '1.0.0';
     desc = 'This is awesome viewpager header';
-    website = '';
+    website = 'https://github.com/birdgang82/viewpagerheader';
 }
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -42,5 +41,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:appcompat-v7:23.0.0'
 }

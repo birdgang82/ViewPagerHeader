@@ -3,4 +3,23 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="background_common">#f2f1f0</color>
+
+    <color name="left_btn">#64676b</color>
+    <color name="right_btn">#756cce</color>
+    <color name="left_click_btn">#a4a7ab</color>
+    <color name="right_click_btn">#9f9ad6</color>
+
+    <color name="common_text">#ff3f3e3e</color>
+    <color name="title_selected">#ff5a35c8</color>
+
+
+    <color name="white">#ffffffff</color>
+    <color name="white_20">#33ffffff</color>
+    <color name="white_30">#4dffffff</color>
+    <color name="white_40">#66ffffff</color>
+    <color name="white_70">#b3ffffff</color>
+    <color name="white_95">#f2ffffff</color>
+
 </resources>

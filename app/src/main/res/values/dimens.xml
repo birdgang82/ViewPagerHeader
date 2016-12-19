@@ -2,4 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- viewpager header  -->
+    <dimen name="header_container_height">230.0dp</dimen>
+    <dimen name="header_background_height">180.0dp</dimen>
+    <dimen name="header_tab_strip_height">50.0dp</dimen>
+
+    <dimen name="viewpager_header_indicator_height">26.0dp</dimen>
+    <dimen name="viewpager_header_indicator_left_margin">24.0dp</dimen>
+    <dimen name="viewpager_header_indicator_right_margin">24.0dp</dimen>
+
+    <dimen name="tab_strip_height">50.0dp</dimen>
 </resources>
