@@ -51,13 +51,11 @@ public class ProgressView extends FrameLayout {
         addView(view);
     }
 
-
     public void start() {
         if (null != animation) {
             animation.start();
         }
     }
-
 
     public void dismiss() {
         if (null != animation) {
