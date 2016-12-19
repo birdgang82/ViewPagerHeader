@@ -85,11 +85,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "sample_list_load_error", Toast.LENGTH_LONG).show();
         }
 
-        Log.i("birdgangviewpager" , "groups.size() : " + groups.size());
         for (HeaderItemGroupEntry group : groups) {
             List<HeaderItemEntry> samples = group.samples;
             for (HeaderItemEntry sample : samples) {
-                Log.i("birdgangviewpager" , "sample.name : " + sample.name);
+                //Log.i("birdgangviewpager" , "sample.name : " + sample.name);
                 mHeaderItemEntries.add(sample);
             }
         }
@@ -143,11 +142,9 @@ public class MainActivity extends AppCompatActivity {
             String userAgent = Util.getUserAgent(context, "ExoPlayerDemo");
             DataSource dataSource = new DefaultDataSource(context, null, userAgent, false);
             for (String uri : uris) {
-                Log.i("birdgangviewpager" , "SampleListLoader > doInBackground > uri : " + uri);
                 DataSpec dataSpec = new DataSpec(Uri.parse(uri));
                 InputStream inputStream = new DataSourceInputStream(dataSource, dataSpec);
                 try {
-                    Log.i("birdgangviewpager" , "SampleListLoader > doInBackground");
                     readSampleGroups(new JsonReader(new InputStreamReader(inputStream, "UTF-8")), result);
                 } catch (Exception e) {
                     Log.e(TAG, "Error loading sample list: " + uri, e);
@@ -165,8 +162,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void readSampleGroups(JsonReader reader, List<HeaderItemGroupEntry> groups) throws IOException {
-            Log.i("birdgangviewpager" , "readSampleGroups");
-
             reader.beginArray();
             while (reader.hasNext()) {
                 readSampleGroup(reader, groups);
@@ -198,8 +193,6 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         throw new ParserException("Unsupported name: " + name);
                 }
-
-                Log.i("birdgangviewpager" , "readSampleGroup > name : " + name + " , groupName : " + groupName);
             }
             reader.endObject();
 

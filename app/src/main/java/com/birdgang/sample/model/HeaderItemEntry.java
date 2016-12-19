@@ -6,7 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.birdgang.sample.IntentParams;
-import com.birdgang.sample.ui.PlayerActivity;
+import com.birdgang.sample.ui.MainActivity;
 
 import java.util.UUID;
 
@@ -49,7 +49,7 @@ public class HeaderItemEntry implements Parcelable {
     }
 
     public Intent buildIntent(Context context) {
-        Intent intent = new Intent(context, PlayerActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(IntentParams.PARAMS_PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
         if (drmSchemeUuid != null) {
             intent.putExtra(IntentParams.PARAMS_DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString());

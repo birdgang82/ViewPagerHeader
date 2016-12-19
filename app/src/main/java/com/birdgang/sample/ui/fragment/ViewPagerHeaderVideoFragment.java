@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.birdgang.sample.GlobalApplication;
@@ -21,10 +20,10 @@ import com.birdgang.sample.IntentParams;
 import com.birdgang.sample.R;
 import com.birdgang.sample.model.HeaderItemEntry;
 import com.birdgang.sample.model.UriHeaderItemEntry;
-import com.birdgang.sample.player.EventLogger;
-import com.birdgang.sample.player.SimpleCustomExoPlayerView;
-import com.birdgang.sample.player.TrackSelectionHelper;
 import com.birdgang.sample.view.ProgressView;
+import com.birdgang.viewpagerheader.video.CustomSimpleExoPlayerView;
+import com.birdgang.viewpagerheader.video.EventLogger;
+import com.birdgang.viewpagerheader.video.TrackSelectionHelper;
 import com.birdgang.viewpagerheader.viewpager.HeaderFragmentChangeNotifier;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -86,7 +85,7 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     private Handler mainHandler;
     private Timeline.Window window;
     private EventLogger eventLogger;
-    private SimpleCustomExoPlayerView simpleCustomExoPlayerView;
+    private CustomSimpleExoPlayerView simpleCustomExoPlayerView;
     private ProgressView mProgressView;
 
     private DataSource.Factory mediaDataSourceFactory;
@@ -137,7 +136,7 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewpager_header_video, container, false);
 
-        simpleCustomExoPlayerView = (SimpleCustomExoPlayerView) view.findViewById(R.id.simple_exo_player_view);
+        simpleCustomExoPlayerView = (CustomSimpleExoPlayerView) view.findViewById(R.id.simple_exo_player_view);
         simpleCustomExoPlayerView.setControllerVisibilityListener(this);
         simpleCustomExoPlayerView.requestFocus();
 
@@ -290,6 +289,7 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
             playerNeedsSource = false;
         }
     }
+
 
     private MediaSource buildMediaSource(Uri uri, String overrideExtension) {
         int type = Util.inferContentType(!TextUtils.isEmpty(overrideExtension) ? "." + overrideExtension : uri.getLastPathSegment());

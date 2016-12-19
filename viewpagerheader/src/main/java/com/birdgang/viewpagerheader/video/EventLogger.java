@@ -1,4 +1,4 @@
-package com.birdgang.sample.player;
+package com.birdgang.viewpagerheader.video;
 
 import android.os.SystemClock;
 import android.util.Log;

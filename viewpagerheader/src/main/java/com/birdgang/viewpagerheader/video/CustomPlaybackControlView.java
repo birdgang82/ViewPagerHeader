@@ -1,4 +1,4 @@
-package com.birdgang.sample.player;
+package com.birdgang.viewpagerheader.video;
 
 import android.content.Context;
 
@@ -13,6 +13,5 @@ public class CustomPlaybackControlView extends PlaybackControlView {
     public CustomPlaybackControlView(Context context) {
         super(context);
     }
-
 
 }

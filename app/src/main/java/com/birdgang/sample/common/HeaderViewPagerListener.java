@@ -30,7 +30,6 @@ public class HeaderViewPagerListener implements ViewPager.OnPageChangeListener {
         context = GlobalApplication.getContext();
         this.headerViewPagerAdapter = headerViewPagerAdapter;
         int count = headerViewPagerAdapter.getCount();
-        Log.i("birdgangviewpager" , "HeaderViewPagerListener > count : " + count);
     }
 
     @Override
@@ -38,7 +37,6 @@ public class HeaderViewPagerListener implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageSelected(int position) {
-        Log.i("birdgangviewpager" , "onPageSelected > position : " + position);
         if (position < 0) {
             return;
         }
@@ -56,18 +54,11 @@ public class HeaderViewPagerListener implements ViewPager.OnPageChangeListener {
 
 
     private void tabChangedNotify (int type, int page) {
-        Log.i("birdgangviewpager" , "tabChangedNotify > type :" + type + " , page : " + page);
         if (page <= -1) {
             return;
         }
 
         Fragment fragment = headerViewPagerAdapter.getItem(page);
-
-        if (null == fragment) {
-            Log.i("birdgangviewpager" , "null == fragment");
-        } else {
-            Log.i("birdgangviewpager" , "null != fragment");
-        }
 
         switch (type) {
             case ON_RESUME_FRAGMENT :

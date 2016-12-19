@@ -1,4 +1,4 @@
-package com.birdgang.sample.player;
+package com.birdgang.viewpagerheader.video;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -40,7 +40,7 @@ import java.util.List;
  */
 
 @TargetApi(16)
-public final class SimpleCustomExoPlayerView extends FrameLayout {
+public final class CustomSimpleExoPlayerView extends FrameLayout {
 
     private static final int SURFACE_TYPE_NONE = 0;
     private static final int SURFACE_TYPE_SURFACE_VIEW = 1;
@@ -60,15 +60,15 @@ public final class SimpleCustomExoPlayerView extends FrameLayout {
     private boolean useArtwork;
     private int controllerShowTimeoutMs;
 
-    public SimpleCustomExoPlayerView(Context context) {
+    public CustomSimpleExoPlayerView(Context context) {
         this(context, null);
     }
 
-    public SimpleCustomExoPlayerView(Context context, AttributeSet attrs) {
+    public CustomSimpleExoPlayerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SimpleCustomExoPlayerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomSimpleExoPlayerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         int playerLayoutId = com.google.android.exoplayer2.R.layout.exo_simple_player_view;
