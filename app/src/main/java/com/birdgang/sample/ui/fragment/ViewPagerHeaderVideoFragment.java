@@ -21,15 +21,17 @@ import com.birdgang.sample.R;
 import com.birdgang.sample.model.HeaderItemEntry;
 import com.birdgang.sample.model.UriHeaderItemEntry;
 import com.birdgang.sample.view.ProgressView;
+import com.birdgang.viewpagerheader.video.CustomPlaybackControlView;
+import com.birdgang.viewpagerheader.video.CustomSimpleExoPlayer;
 import com.birdgang.viewpagerheader.video.CustomSimpleExoPlayerView;
 import com.birdgang.viewpagerheader.video.EventLogger;
+import com.birdgang.viewpagerheader.video.ExoPlayerFactory;
 import com.birdgang.viewpagerheader.video.TrackSelectionHelper;
 import com.birdgang.viewpagerheader.viewpager.HeaderFragmentChangeNotifier;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.drm.DrmSessionManager;
@@ -55,7 +57,6 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.ui.PlaybackControlView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
@@ -71,7 +72,7 @@ import java.util.UUID;
 /**
  * Created by birdgang on 2016. 12. 15..
  */
-public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFragmentChangeNotifier.onFragmentHeaderLifycycle, SimpleExoPlayer.EventListener, PlaybackControlView.VisibilityListener {
+public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFragmentChangeNotifier.onFragmentHeaderLifycycle, SimpleExoPlayer.EventListener, CustomPlaybackControlView.VisibilityListener {
 
     private final String TAG = "ViewPagerHeaderFragment";
 
@@ -89,7 +90,7 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     private ProgressView mProgressView;
 
     private DataSource.Factory mediaDataSourceFactory;
-    private SimpleExoPlayer player;
+    private CustomSimpleExoPlayer player;
     private DefaultTrackSelector trackSelector;
     private TrackSelectionHelper trackSelectionHelper;
     private boolean playerNeedsSource;
@@ -136,19 +137,13 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewpager_header_video, container, false);
 
-        simpleCustomExoPlayerView = (CustomSimpleExoPlayerView) view.findViewById(R.id.simple_exo_player_view);
+        simpleCustomExoPlayerView = (CustomSimpleExoPlayerView) view.findViewById(R.id.player_view);
         simpleCustomExoPlayerView.setControllerVisibilityListener(this);
         simpleCustomExoPlayerView.requestFocus();
 
         mProgressView = (ProgressView) view.findViewById(R.id.progress_view);
 
         return view;
-    }
-
-
-    @Override
-    public int getPage() {
-        return 0;
     }
 
     @Override
@@ -158,7 +153,6 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
             releasePlayer();
         }
     }
-
 
     @Override
     public void onResumeFragment(int page) {
@@ -202,7 +196,6 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
     public void onVisibilityChange(int visibility) {
     }
 
-
     private void initializePlayer() {
         if (player == null) {
             boolean preferExtensionDecoders = mHeaderItemEntry.preferExtensionDecoders;
@@ -223,16 +216,13 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
                 } else {
                     keyRequestProperties = new HashMap<>();
                     for (int i = 0; i < keyRequestPropertiesArray.length - 1; i += 2) {
-                        keyRequestProperties.put(keyRequestPropertiesArray[i],
-                                keyRequestPropertiesArray[i + 1]);
+                        keyRequestProperties.put(keyRequestPropertiesArray[i], keyRequestPropertiesArray[i + 1]);
                     }
                 }
                 try {
                     drmSessionManager = buildDrmSessionManager(drmSchemeUuid, drmLicenseUrl, keyRequestProperties);
                 } catch (UnsupportedDrmException e) {
-                    int errorStringId = Util.SDK_INT < 18 ? R.string.error_drm_not_supported
-                            : (e.reason == UnsupportedDrmException.REASON_UNSUPPORTED_SCHEME
-                            ? R.string.error_drm_unsupported_scheme : R.string.error_drm_unknown);
+                    int errorStringId = Util.SDK_INT < 18 ? R.string.error_drm_not_supported  : (e.reason == UnsupportedDrmException.REASON_UNSUPPORTED_SCHEME ? R.string.error_drm_unsupported_scheme : R.string.error_drm_unknown);
                     showToast(errorStringId);
                     return;
                 }
@@ -287,6 +277,10 @@ public class ViewPagerHeaderVideoFragment extends Fragment implements HeaderFrag
             MediaSource mediaSource = mediaSources.length == 1 ? mediaSources[0] : new ConcatenatingMediaSource(mediaSources);
             player.prepare(mediaSource, !isTimelineStatic, !isTimelineStatic);
             playerNeedsSource = false;
+        }
+
+        if (null != simpleCustomExoPlayerView) {
+            simpleCustomExoPlayerView.setVisibleController();
         }
     }
 

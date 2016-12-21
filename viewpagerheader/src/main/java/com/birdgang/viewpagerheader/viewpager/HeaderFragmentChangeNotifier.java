@@ -19,7 +19,6 @@ public enum HeaderFragmentChangeNotifier {
     }
 
     public interface onFragmentHeaderLifycycle {
-        public int getPage();
         public void onPauseFragment(int page);
         public void onResumeFragment(int page);
     }

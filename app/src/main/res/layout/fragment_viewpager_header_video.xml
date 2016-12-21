@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
     <com.birdgang.viewpagerheader.video.CustomSimpleExoPlayerView
-        android:id="@+id/simple_exo_player_view"
+        android:id="@+id/player_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_container_height" />
     <com.birdgang.sample.view.ProgressView

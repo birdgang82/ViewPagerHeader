@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--<declare-styleable name="CustomSimpleExoPlayerView">-->
+        <!--<attr name="custom_use_artwork" format="boolean"/>-->
+        <!--<attr name="custom_use_controller" format="boolean"/>-->
+        <!--<attr name="custom_surface_type"/>-->
+        <!--<attr name="custom_show_timeout"/>-->
+        <!--<attr name="custom_rewind_increment"/>-->
+        <!--<attr name="custom_fastforward_increment"/>-->
+        <!--<attr name="custom_resize_mode"/>-->
+        <!--<attr name="custom_player_layout_id"/>-->
+        <!--<attr name="custom_controller_layout_id"/>-->
+    <!--</declare-styleable>-->
+
+    <!--<declare-styleable name="CustomPlaybackControlView">-->
+        <!--<attr name="custom_show_timeout"/>-->
+        <!--<attr name="custom_rewind_increment"/>-->
+        <!--<attr name="custom_fastforward_increment"/>-->
+        <!--<attr name="custom_controller_layout_id"/>-->
+    <!--</declare-styleable>-->
+
     <declare-styleable name="SpringIndicator">
         <attr name="siTextColor" format="reference"/>
         <attr name="siSelectedTextColor" format="reference"/>
@@ -11,6 +30,5 @@
         <attr name="siRadiusMax" format="dimension"/>
         <attr name="siRadiusMin" format="dimension"/>
     </declare-styleable>
-
 
 </resources>

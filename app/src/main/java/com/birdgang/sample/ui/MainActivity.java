@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private List<HeaderItemEntry> mHeaderItemEntries = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
